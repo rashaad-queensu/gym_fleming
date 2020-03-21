@@ -8,31 +8,49 @@ import numpy as np
 # To change 1) update map, 2) change num_rows, 3) change num_columns, 4) change the locations at self.locs (row 80)
 
 MAP = [
-    "+-------------------+",
-    "|R: | : : : : | : :G|",
-    "| : | : : : : | : : |",
-    "| : : : : : : : : : |",
-    "| | : | : : | : | : |",
-    "|Y| : | : : | : |B: |",
-    "+-------------------+",
+    "+--------------------------------------+",
+    "|R: | : : : : | : : : : | : : : : | : :G|",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : : : : : : : : : : : : : : : : : : : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : : : : : : : : : : : : : : : : : : : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : : : : : : : : : : : : : : : : : : : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : | : : : : | : : : : | : : : : | : : |",
+    "| : : : : : : : : : : : : : : : : : : : |",
+    "| | : | : : | : | : : | : | : : | : | : |",
+    "|Y| : | : : | : | : : | : | : : | : |B: |",
+    "+-------------------+-------------------+",
 ]
 
-num_rows = 5
-num_columns = 10  # Changed from 5
+num_rows = 20
+num_columns = 20  # Changed from 5
 num_states = num_rows * num_columns * 5 * 4
 
 
-class FlemingTaxiEnv(discrete.DiscreteEnv):
+class FlemingTaxiEnv_20x20(discrete.DiscreteEnv):
     """
     The Taxi Problem
     from "Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition"
     by Tom Dietterich
 
-    Description:
-    There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's destination (another one of the four specified locations), and then drops off the passenger. Once the passenger is dropped off, the episode ends.
+    Description: There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow),
+    and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random
+    location. The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's
+    destination (another one of the four specified locations), and then drops off the passenger. Once the passenger
+    is dropped off, the episode ends.
 
-    Observations: 
-    There are 500 discrete states since there are 25 taxi positions, 5 possible locations of the passenger (including the case when the passenger is in the taxi), and 4 destination locations. 
+    Observations: There are 500 discrete states since there are 25 taxi positions, 5 possible locations of the
+    passenger (including the case when the passenger is in the taxi), and 4 destination locations.
     
     Passenger locations:
     - 0: R(ed)
@@ -77,7 +95,7 @@ class FlemingTaxiEnv(discrete.DiscreteEnv):
         self.desc = np.asarray(MAP, dtype='c')
 
         # self.locs = locs = [(0, 0), (0, 4), (4, 0), (4, 3)]
-        self.locs = locs = [(0, 0), (0, 9), (4, 0), (4, 8)]
+        self.locs = locs = [(0, 0), (0, 19), (19, 0), (19, 18)]
 
         max_row = num_rows - 1
         max_col = num_columns - 1

@@ -1,1 +1,3 @@
-from gym_fleming.envs.taxi_fleming import FlemingTaxiEnv
+from gym_fleming.envs.taxi_fleming_5x10 import FlemingTaxiEnv_5x10
+from gym_fleming.envs.taxi_fleming_10x10 import FlemingTaxiEnv_10x10
+from gym_fleming.envs.taxi_fleming_20x20 import FlemingTaxiEnv_20x20
